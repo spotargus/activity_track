@@ -1,0 +1,23 @@
+{
+    "name": "elf-r/activity_track",
+    "description": "Track activity for Laravel",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vschoholiev",
+            "email": "vshoholev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ElfR\\ActivityTrack\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "illuminate/container": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~7.0.0|8.*",
+        "illuminate/contracts": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~7.0.0|8.*",
+        "illuminate/database": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~7.0.0|8.*"
+    }
+}
