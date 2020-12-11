@@ -1,0 +1,13 @@
+{
+    "name": "elf-r/activity_track",
+    "description": "Track activity for laravel",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vschoholiev",
+            "email": "vshoholev@gmail.com"
+        }
+    ],
+    "require": {}
+}
