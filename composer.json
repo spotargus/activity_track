@@ -3,6 +3,14 @@
     "description": "Track activity for Laravel",
     "type": "composer-plugin",
     "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
     "authors": [
         {
             "name": "vschoholiev",
