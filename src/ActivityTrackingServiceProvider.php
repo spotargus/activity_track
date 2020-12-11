@@ -16,7 +16,7 @@ class ActivityTrackingServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'../config/activity-track.php' => config_path('activity-track.php'),
+            __DIR__.'/../config/activity-track.php' => config_path('activity-track.php'),
         ]);
 
         $this->loadMigrationsFrom(__DIR__.'../database/migrations');
