@@ -15,11 +15,18 @@ use Illuminate\Support\ServiceProvider;
  */
 class ActivityTrackingServiceProvider extends ServiceProvider
 {
-    public function boot()
+    /**
+     * @param Filesystem $filesystem
+     */
+    public function boot(Filesystem $filesystem)
     {
         $this->publishes([
             __DIR__.'/../config/activity-track.php' => config_path('activity-track.php'),
         ]);
+
+        $this->publishes([
+            __DIR__.'/../database/migrations/create_activity_tracks_table.php.stub' => $this->getMigrationFileName($filesystem),
+        ], 'migrations');
 
         $this->loadMigrationsFrom(__DIR__.'../database/migrations');
     }
