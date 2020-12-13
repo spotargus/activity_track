@@ -16,8 +16,6 @@ use Illuminate\Database\Query\Builder;
  */
 class ActivityTrack extends Model
 {
-    protected $fillable = [];
-
     /**
      * ActivityTrack constructor.
      *
@@ -28,7 +26,18 @@ class ActivityTrack extends Model
         parent::__construct($attributes);
 
         $this->setTable(config('activity-track.table_names.activity_tracks'));
-        $this->setFillable();
+    }
+
+    /**
+     * @return array
+     */
+    public function getFillable()
+    {
+        return [
+            config('activity-track.column_names.activity_tracks.model_key'),
+            config('activity-track.column_names.activity_tracks.trackable_type'),
+            config('activity-track.column_names.activity_tracks.tracking_type'),
+        ];
     }
 
     /**
@@ -47,14 +56,5 @@ class ActivityTrack extends Model
     public function trackable()
     {
         return $this->morphTo();
-    }
-
-    private function setFillable()
-    {
-        $this->fillable = [
-            config('activity-track.column_names.activity_tracks.model_key'),
-            config('activity-track.column_names.activity_tracks.trackable_type'),
-            config('activity-track.column_names.activity_tracks.tracking_type'),
-        ];
     }
 }
