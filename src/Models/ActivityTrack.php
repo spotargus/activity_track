@@ -49,10 +49,7 @@ class ActivityTrack extends Model
         return $this->morphTo();
     }
 
-    /**
-     * @return array
-     */
-    private function setFillable(): array
+    private function setFillable()
     {
         $this->fillable = [
             config('activity-track.column_names.activity_tracks.model_key'),
