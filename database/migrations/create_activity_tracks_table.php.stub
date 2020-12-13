@@ -14,7 +14,7 @@ class CreateActivityTracksTable extends Migration
         $tableNames = config('activity-track.table_names');
         $columnNames = config('activity-track.column_names');
 
-        Schema::create($tableNames['activity_tracks'], function(Blueprint $table) {
+        Schema::create($tableNames['activity_tracks'], function(Blueprint $table) use ($columnNames) {
             $table->increments($columnNames['activity_tracks']['id']);
             $table->unsignedBigInteger($columnNames['activity_tracks']['model_key']);
             $table->string($columnNames['activity_tracks']['model_type']);
