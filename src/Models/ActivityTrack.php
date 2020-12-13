@@ -31,12 +31,16 @@ class ActivityTrack extends Model
     /**
      * @return array
      */
-    public function getFillable()
+    public function getFillable(): array
     {
+        $modelId    = (string)config('activity-track.column_names.activity_tracks.model_key');
+        $modelType  = (string)config('activity-track.column_names.activity_tracks.trackable_type');
+        $type       = (string)config('activity-track.column_names.activity_tracks.tracking_type');
+
         return [
-            config('activity-track.column_names.activity_tracks.model_key'),
-            config('activity-track.column_names.activity_tracks.trackable_type'),
-            config('activity-track.column_names.activity_tracks.tracking_type'),
+            $modelId,
+            $modelType,
+            $type
         ];
     }
 
