@@ -4,6 +4,8 @@
 namespace ElfR\ActivityTrack\Models;
 
 
+use ElfR\ActivityTrack\Contracts\ActivityTrackContract;
+use ElfR\ActivityTrack\Objects\ActivityTrackObject;
 use ElfR\ActivityTrack\QueryBuilders\ActivityTrackQueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -14,7 +16,7 @@ use Illuminate\Database\Query\Builder;
  *
  * @package ElfR\ActivityTrack\Models
  */
-class ActivityTrack extends Model
+class ActivityTrack extends Model implements ActivityTrackContract
 {
     /**
      * ActivityTrack constructor.
@@ -60,5 +62,21 @@ class ActivityTrack extends Model
     public function trackable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @param ActivityTrackObject $activityTrackObject
+     *
+     * @return mixed|void
+     */
+    public function createActivityTrack(ActivityTrackObject $activityTrackObject)
+    {
+        $attributes = [
+            config('activity-track.column_names.activity_tracks.model_key') => $activityTrackObject->getTrackedId(),
+            config('activity-track.column_names.activity_tracks.model_type') => $activityTrackObject->getTrackedType(),
+            config('activity-track.column_names.activity_tracks.tracking_type') => $activityTrackObject->getTrackingAction()
+        ];
+
+        parent::create($attributes);
     }
 }
