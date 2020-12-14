@@ -69,7 +69,7 @@ class ActivityTrack extends Model implements ActivityTrackContract
      *
      * @return mixed
      */
-    public static function create(ActivityTrackObject $activityTrackObject)
+    public static function createRecord(ActivityTrackObject $activityTrackObject)
     {
         $attributes = [
             config('activity-track.column_names.activity_tracks.model_key') => $activityTrackObject->getTrackedId(),
