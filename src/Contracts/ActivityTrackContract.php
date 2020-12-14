@@ -17,5 +17,5 @@ interface ActivityTrackContract
      *
      * @return mixed
      */
-    public function createActivityTrack(ActivityTrackObject $activityTrackObject);
+    public static function create(ActivityTrackObject $activityTrackObject);
 }
