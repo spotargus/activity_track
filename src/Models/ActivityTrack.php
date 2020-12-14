@@ -36,7 +36,7 @@ class ActivityTrack extends Model implements ActivityTrackContract
     public function getFillable(): array
     {
         $modelId    = (string)config('activity-track.column_names.activity_tracks.model_key');
-        $modelType  = (string)config('activity-track.column_names.activity_tracks.trackable_type');
+        $modelType  = (string)config('activity-track.column_names.activity_tracks.model_type');
         $type       = (string)config('activity-track.column_names.activity_tracks.tracking_type');
 
         return [
