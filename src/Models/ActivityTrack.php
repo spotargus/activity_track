@@ -5,8 +5,8 @@ namespace ElfR\ActivityTrack\Models;
 
 
 use ElfR\ActivityTrack\Contracts\ActivityTrackContract;
-use ElfR\ActivityTrack\Objects\ActivityTrackObject;
 use ElfR\ActivityTrack\QueryBuilders\ActivityTrackQueryBuilder;
+use ElfR\ActivityTrack\ValueObjects\ActivityTrackValueObject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Query\Builder;
@@ -65,11 +65,11 @@ class ActivityTrack extends Model implements ActivityTrackContract
     }
 
     /**
-     * @param ActivityTrackObject $activityTrackObject
+     * @param ActivityTrackValueObject $activityTrackObject
      *
      * @return mixed
      */
-    public static function createRecord(ActivityTrackObject $activityTrackObject)
+    public static function createRecord(ActivityTrackValueObject $activityTrackObject)
     {
         $attributes = [
             config('activity-track.column_names.activity_tracks.model_key') => $activityTrackObject->getTrackedId(),

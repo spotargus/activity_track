@@ -3,7 +3,7 @@
 
 namespace ElfR\ActivityTrack\Contracts;
 
-use ElfR\ActivityTrack\Objects\ActivityTrackObject;
+use ElfR\ActivityTrack\ValueObjects\ActivityTrackValueObject;
 
 /**
  * Interface ActivityTrackContract
@@ -13,9 +13,9 @@ use ElfR\ActivityTrack\Objects\ActivityTrackObject;
 interface ActivityTrackContract
 {
     /**
-     * @param ActivityTrackObject $activityTrackObject
+     * @param ActivityTrackValueObject $activityTrackObject
      *
      * @return mixed
      */
-    public static function createRecord(ActivityTrackObject $activityTrackObject);
+    public static function createRecord(ActivityTrackValueObject $activityTrackObject);
 }

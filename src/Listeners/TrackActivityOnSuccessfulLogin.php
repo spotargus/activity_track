@@ -5,7 +5,7 @@ namespace ElfR\ActivityTrack\Listeners;
 
 
 use ElfR\ActivityTrack\Models\ActivityTrack;
-use ElfR\ActivityTrack\Objects\ActivityTrackObject;
+use ElfR\ActivityTrack\ValueObjects\ActivityTrackValueObject;
 use Illuminate\Auth\Events\Login;
 
 /**
@@ -20,7 +20,7 @@ class TrackActivityOnSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        $activityTrackObject = new ActicityTrackObject(
+        $activityTrackObject = new ActivityTrackValueObject(
             $event->user->id,
             get_class($event->user),
             config('activity-track.tracking_types.success_login')

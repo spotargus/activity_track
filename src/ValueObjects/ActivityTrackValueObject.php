@@ -1,14 +1,14 @@
 <?php
 
 
-namespace ElfR\ActivityTrack\Objects;
+namespace ElfR\ActivityTrack\ValueObjects;
 
 /**
- * Class ActivityTrackObject
+ * Class ActivityTrackValueObject
  *
- * @package ElfR\ActivityTrack\Objects
+ * @package ElfR\ActivityTrack\ValueObjects
  */
-class ActivityTrackObject
+class ActivityTrackValueObject
 {
     /**
      * @var string
@@ -24,7 +24,7 @@ class ActivityTrackObject
     private $trackingAction;
 
     /**
-     * ActivityTrackObject constructor.
+     * ActivityTrackValueObject constructor.
      *
      * @param string $trackedId
      * @param string $trackedType
