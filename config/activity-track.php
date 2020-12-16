@@ -15,5 +15,9 @@ return [
             'model_type' => 'trackable_type',
             'tracking_type' => 'tracking_type'
         ],
+    ],
+    'tracking_types' => [
+        'success_login' => 'success-login',
+        'failed_login' => 'failed-login',
     ]
 ];

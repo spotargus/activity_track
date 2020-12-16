@@ -4,6 +4,8 @@
 namespace ElfR\ActivityTrack;
 
 
+use ElfR\ActivityTrack\Traits\EventMap;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
@@ -15,18 +17,18 @@ use Illuminate\Support\ServiceProvider;
  */
 class ActivityTrackingServiceProvider extends ServiceProvider
 {
+    use EventMap;
+
     /**
      * @param Filesystem $filesystem
      */
     public function boot(Filesystem $filesystem)
     {
-        $this->publishes([
-            __DIR__.'/../config/activity-track.php' => config_path('activity-track.php'),
-        ]);
+        $this->registerEvents();
 
-        $this->publishes([
-            __DIR__.'/../database/migrations/create_activity_tracks_table.php.stub' => $this->getMigrationFileName($filesystem),
-        ], 'migrations');
+        $this->publishConfig();
+
+        $this->publishMigrations();
 
         $this->loadMigrationsFrom(__DIR__.'../database/migrations');
     }
@@ -39,6 +41,42 @@ class ActivityTrackingServiceProvider extends ServiceProvider
         );
 
         parent::register();
+    }
+
+    /**
+     * Register the Horizon job events.
+     *
+     * @return void
+     */
+    protected function registerEvents()
+    {
+        $events = $this->app->make(Dispatcher::class);
+
+        foreach ($this->events as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                $events->listen($event, $listener);
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../config/activity-track.php' => config_path('activity-track.php'),
+        ]);
+    }
+
+    /**
+     *
+     */
+    protected function publishMigrations()
+    {
+        $this->publishes([
+            __DIR__.'/../database/migrations/create_activity_tracks_table.php.stub' => $this->getMigrationFileName($filesystem),
+        ], 'migrations');
     }
 
     /**
