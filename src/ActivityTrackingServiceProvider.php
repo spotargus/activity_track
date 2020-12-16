@@ -19,10 +19,7 @@ class ActivityTrackingServiceProvider extends ServiceProvider
 {
     use EventMap;
 
-    /**
-     * @param Filesystem $filesystem
-     */
-    public function boot(Filesystem $filesystem)
+    public function boot()
     {
         $this->registerEvents();
 
@@ -74,6 +71,8 @@ class ActivityTrackingServiceProvider extends ServiceProvider
      */
     protected function publishMigrations()
     {
+        $filesystem = app(Filesystem::class);
+
         $this->publishes([
             __DIR__.'/../database/migrations/create_activity_tracks_table.php.stub' => $this->getMigrationFileName($filesystem),
         ], 'migrations');
