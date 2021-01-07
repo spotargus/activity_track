@@ -5,7 +5,6 @@ namespace ElfR\ActivityTrack\Traits;
 
 use ElfR\ActivityTrack\Listeners\TrackActivityOnFailedLogin;
 use ElfR\ActivityTrack\Listeners\TrackActivityOnSuccessfulLogin;
-use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
 
 /**
@@ -22,10 +21,6 @@ trait EventMap
         Login::class => [
             TrackActivityOnSuccessfulLogin::class
         ],
-
-        Failed::class => [
-            TrackActivityOnFailedLogin::class
-        ]
     ];
 
 }
